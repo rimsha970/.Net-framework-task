@@ -1,0 +1,87 @@
+﻿@model Shoppack
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>profile</title>
+</head>
+<body>
+    <div>
+        <h4>Your Profile!!</h4>
+        @Html.ActionLink("Update your profile", "profileupdate", new { id=Model.person.Id})
+        <hr />
+        <dl class="dl-horizontal">
+        </dl>
+    </div>
+    <div>
+
+        @{
+            String img64 = Convert.ToBase64String(Model.shopKeeper.picture);
+            String img64Url = string.Format("data:image/" + Model.shopKeeper.picture + ";base64,{0}", img64); //imagetype can be e.g. gif, jpeg, png etc.
+        }
+        <img src="@img64Url" imagealign="right" widht="200" height="200 " />
+        <div style="float: left;  margin-left:10px; font-size:medium; display: inline-block; ">
+            <dt>
+                @Html.DisplayNameFor(model => model.person.Name)
+
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.person.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.person.Contact)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.person.Contact)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.person.Email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.person.Email)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.person.SecurityQuestion)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.person.SecurityQuestion)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.person.SecurityAnswer)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.person.SecurityAnswer)
+
+            </dd>
+
+            </div>
+
+        </div>
+
+   <hr/>
+    <p>
+        
+        @Html.ActionLink("Back to shop", "Details", new { id = Model.person.Id })
+    </p>
+    @if (ViewBag.Message != null)
+    {
+        <script type="text/javascript">
+            window.onload = function () {
+                alert("@ViewBag.Message");
+            };
+        </script>
+
+
+    }
+</body>
+</html>

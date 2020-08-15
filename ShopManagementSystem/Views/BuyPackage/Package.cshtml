@@ -1,0 +1,27 @@
+﻿@model ShopManagementSystem.Models.Package
+
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Package</title>
+</head>
+<body>
+    <div> 
+    </div>
+    @Html.ActionLink("Back to Signup ", "Create", "Register")
+    @if (ViewBag.Message != null)
+    {
+        <script type="text/javascript">
+            window.onload = function () {
+                alert("@ViewBag.Message");
+            };
+        </script>
+
+
+    }
+</body>
+</html>

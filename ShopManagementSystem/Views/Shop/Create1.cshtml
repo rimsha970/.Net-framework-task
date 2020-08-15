@@ -1,0 +1,92 @@
+﻿@model Shoppack
+
+
+
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create1</title>
+</head>
+<body>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+
+
+    @using (Html.BeginForm("Create1", "Shop", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Step3:- Information of your Shop</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <h4>Shop Details!! </h4>
+            <div class="form-group">
+
+                @Html.LabelFor(model => model.shop.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <input type="text" name="Name" class="lock" placeholder="Enter a shop name" required="">
+                </div>
+            </div>
+
+
+            <div class="form-group">
+
+                @Html.LabelFor(model => model.shop.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <input type="text" name="Description" class="lock" placeholder="Shop description" required="">
+                </div>
+            </div>
+            <div class="form-group">
+
+                @Html.LabelFor(model => model.shop.Address, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <input type="text" name="Address" class="lock" placeholder="Shop address" required="">
+                </div>
+            </div>
+
+            <div class="form-group">
+
+                @Html.LabelFor(model => model.shop.Contact, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <input type="text" name="Contact" class="lock" placeholder="Shop contact" required="">
+                </div>
+            </div>
+            <hr />
+
+            @Html.LabelFor(model => model.shop.PStart)
+            <div class="form-group">
+                <div class="col-md-10">
+                    @DateTime.Now
+                    @Html.ValidationMessageFor(model => model.shop.PStart)
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create Shop!!" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+    @Html.ActionLink("Buy more Shops", "Index", "BuyPackage")
+    <div>
+        @Html.ActionLink("Back to Homepage", "Index", "Home")
+    </div>
+
+    @if (ViewBag.Message != null)
+    {
+        <script type="text/javascript">
+            window.onload = function () {
+                alert("@ViewBag.Message");
+            };
+        </script>
+    }
+</body>
+</html>
+

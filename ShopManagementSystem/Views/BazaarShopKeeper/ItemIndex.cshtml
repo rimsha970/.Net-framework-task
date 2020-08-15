@@ -1,0 +1,71 @@
+﻿@model ItemPicture
+
+@{
+    ViewBag.Title = "Items Details!!";
+}
+
+<h2>Items!!</h2>
+
+<p>
+    @Html.ActionLink("Add a new Item!", "AddItem",new{id=(Convert.ToInt32(@ViewData["CategoryId"]))})
+</p>
+
+
+
+
+   
+<table class="table">
+    <tr>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.item.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.item.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.item.Quantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.item.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.item.Available)
+        </th>
+       
+        
+        
+    </tr>
+    
+    @foreach (var item in Model.itemlist)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Available)
+            </td>
+          
+
+            <td>
+                @Html.ActionLink("Edit", "ItemEdit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "ItemDetails", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "ItemDelete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>
+
+@Html.ActionLink("Back to Categories list", "CategoryIndex", new { idshop = Convert.ToInt32(@ViewData["shoop"])})
+

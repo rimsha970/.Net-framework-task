@@ -1,0 +1,166 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="buzzarModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="LoginId" />
+    </Key>
+    <Property Name="LoginId" Type="int" Nullable="false" />
+    <Property Name="Address" Type="varchar" MaxLength="150" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Login">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Contact" Type="varchar" MaxLength="25" />
+    <Property Name="Email" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="SecurityQuestion" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="SecurityAnswer" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="LoginType" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Packages">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Price" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Pictures">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="picture" Type="image" Nullable="false" />
+    <Property Name="ShopID" Type="int" />
+    <Property Name="ItemID" Type="int" />
+  </EntityType>
+  <EntityType Name="Shop">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="150" />
+    <Property Name="SubPackage" Type="int" Nullable="false" />
+    <Property Name="AppPackage" Type="int" />
+    <Property Name="PackageStart" Type="date" Nullable="false" />
+    <Property Name="PackageEnd" Type="date" Nullable="false" />
+    <Property Name="Address" Type="varchar" MaxLength="100" />
+    <Property Name="Contact" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="ShopKeeper">
+    <Key>
+      <PropertyRef Name="LoginId" />
+    </Key>
+    <Property Name="LoginId" Type="int" Nullable="false" />
+    <Property Name="ShopID" Type="int" Nullable="false" />
+    <Property Name="picture" Type="image" />
+  </EntityType>
+  <Association Name="FK_Pictures_Shop">
+    <End Role="Shop" Type="Self.Shop" Multiplicity="0..1" />
+    <End Role="Pictures" Type="Self.Pictures" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Shop">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Pictures">
+        <PropertyRef Name="ShopID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Shop">
+    <End Role="Shop" Type="Self.Shop" Multiplicity="1" />
+    <End Role="ShopKeeper" Type="Self.ShopKeeper" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Shop">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ShopKeeper">
+        <PropertyRef Name="ShopID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Shop_Packages">
+    <End Role="Packages" Type="Self.Packages" Multiplicity="1" />
+    <End Role="Shop" Type="Self.Shop" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Packages">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Shop">
+        <PropertyRef Name="SubPackage" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Shop_Packages1">
+    <End Role="Packages" Type="Self.Packages" Multiplicity="0..1" />
+    <End Role="Shop" Type="Self.Shop" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Packages">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Shop">
+        <PropertyRef Name="AppPackage" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="LoginId">
+    <End Role="Login" Type="Self.Login" Multiplicity="1" />
+    <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Login">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Customer">
+        <PropertyRef Name="LoginId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PersonId">
+    <End Role="Login" Type="Self.Login" Multiplicity="1" />
+    <End Role="ShopKeeper" Type="Self.ShopKeeper" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Login">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ShopKeeper">
+        <PropertyRef Name="LoginId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="buzzarModelStoreContainer">
+    <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Login" EntityType="Self.Login" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Packages" EntityType="Self.Packages" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Pictures" EntityType="Self.Pictures" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Shop" EntityType="Self.Shop" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ShopKeeper" EntityType="Self.ShopKeeper" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Pictures_Shop" Association="Self.FK_Pictures_Shop">
+      <End Role="Shop" EntitySet="Shop" />
+      <End Role="Pictures" EntitySet="Pictures" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Shop" Association="Self.FK_Shop">
+      <End Role="Shop" EntitySet="Shop" />
+      <End Role="ShopKeeper" EntitySet="ShopKeeper" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Shop_Packages" Association="Self.FK_Shop_Packages">
+      <End Role="Packages" EntitySet="Packages" />
+      <End Role="Shop" EntitySet="Shop" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Shop_Packages1" Association="Self.FK_Shop_Packages1">
+      <End Role="Packages" EntitySet="Packages" />
+      <End Role="Shop" EntitySet="Shop" />
+    </AssociationSet>
+    <AssociationSet Name="LoginId" Association="Self.LoginId">
+      <End Role="Login" EntitySet="Login" />
+      <End Role="Customer" EntitySet="Customer" />
+    </AssociationSet>
+    <AssociationSet Name="PersonId" Association="Self.PersonId">
+      <End Role="Login" EntitySet="Login" />
+      <End Role="ShopKeeper" EntitySet="ShopKeeper" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

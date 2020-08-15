@@ -1,0 +1,202 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="signupModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="LoginId" />
+    </Key>
+    <Property Name="LoginId" Type="Int32" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Login" Relationship="Self.LoginId" FromRole="Customer" ToRole="Login" />
+  </EntityType>
+  <EntityType Name="Login">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Contact" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SecurityQuestion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SecurityAnswer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="LoginType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Customer" Relationship="Self.LoginId" FromRole="Login" ToRole="Customer" />
+    <NavigationProperty Name="ShopKeeper" Relationship="Self.PersonId" FromRole="Login" ToRole="ShopKeeper" />
+  </EntityType>
+  <EntityType Name="Package">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Shops" Relationship="Self.FK_Shop_Packages" FromRole="Packages" ToRole="Shop" />
+    <NavigationProperty Name="Shops1" Relationship="Self.FK_Shop_Packages1" FromRole="Packages" ToRole="Shop" />
+  </EntityType>
+  <EntityType Name="Picture">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="picture1" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+    <NavigationProperty Name="ShopPictures" Relationship="Self.FK_ShopPictures_Pictures" FromRole="Pictures" ToRole="ShopPictures" />
+  </EntityType>
+  <EntityType Name="Shop">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="SubPackage" Type="Int32" Nullable="false" />
+    <Property Name="AppPackage" Type="Int32" />
+    <Property Name="PackageStart" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="PackageEnd" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Contact" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Package" Relationship="Self.FK_Shop_Packages" FromRole="Shop" ToRole="Packages" />
+    <NavigationProperty Name="Package1" Relationship="Self.FK_Shop_Packages1" FromRole="Shop" ToRole="Packages" />
+    <NavigationProperty Name="ShopKeepers" Relationship="Self.FK_Shop" FromRole="Shop" ToRole="ShopKeeper" />
+    <NavigationProperty Name="ShopPictures" Relationship="Self.FK_ShopPictures_Shop" FromRole="Shop" ToRole="ShopPictures" />
+  </EntityType>
+  <EntityType Name="ShopKeeper">
+    <Key>
+      <PropertyRef Name="LoginId" />
+    </Key>
+    <Property Name="LoginId" Type="Int32" Nullable="false" />
+    <Property Name="ShopID" Type="Int32" Nullable="false" />
+    <Property Name="picture" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="Login" Relationship="Self.PersonId" FromRole="ShopKeeper" ToRole="Login" />
+    <NavigationProperty Name="Shop" Relationship="Self.FK_Shop" FromRole="ShopKeeper" ToRole="Shop" />
+  </EntityType>
+  <EntityType Name="ShopPicture">
+    <Key>
+      <PropertyRef Name="ShopPictureId" />
+    </Key>
+    <Property Name="ShopId" Type="Int32" Nullable="false" />
+    <Property Name="PictureId" Type="Int32" Nullable="false" />
+    <Property Name="ShopPictureId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Picture" Relationship="Self.FK_ShopPictures_Pictures" FromRole="ShopPictures" ToRole="Pictures" />
+    <NavigationProperty Name="Shop" Relationship="Self.FK_ShopPictures_Shop" FromRole="ShopPictures" ToRole="Shop" />
+  </EntityType>
+  <Association Name="LoginId">
+    <End Role="Login" Type="Self.Login" Multiplicity="1" />
+    <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Login">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Customer">
+        <PropertyRef Name="LoginId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PersonId">
+    <End Role="Login" Type="Self.Login" Multiplicity="1" />
+    <End Role="ShopKeeper" Type="Self.ShopKeeper" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Login">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ShopKeeper">
+        <PropertyRef Name="LoginId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Shop_Packages">
+    <End Role="Packages" Type="Self.Package" Multiplicity="1" />
+    <End Role="Shop" Type="Self.Shop" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Packages">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Shop">
+        <PropertyRef Name="SubPackage" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Shop_Packages1">
+    <End Role="Packages" Type="Self.Package" Multiplicity="0..1" />
+    <End Role="Shop" Type="Self.Shop" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Packages">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Shop">
+        <PropertyRef Name="AppPackage" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ShopPictures_Pictures">
+    <End Role="Pictures" Type="Self.Picture" Multiplicity="1" />
+    <End Role="ShopPictures" Type="Self.ShopPicture" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pictures">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ShopPictures">
+        <PropertyRef Name="PictureId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Shop">
+    <End Role="Shop" Type="Self.Shop" Multiplicity="1" />
+    <End Role="ShopKeeper" Type="Self.ShopKeeper" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Shop">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ShopKeeper">
+        <PropertyRef Name="ShopID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ShopPictures_Shop">
+    <End Role="Shop" Type="Self.Shop" Multiplicity="1" />
+    <End Role="ShopPictures" Type="Self.ShopPicture" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Shop">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ShopPictures">
+        <PropertyRef Name="ShopId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="buzzarEntities7" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Customers" EntityType="Self.Customer" />
+    <EntitySet Name="Logins" EntityType="Self.Login" />
+    <EntitySet Name="Packages" EntityType="Self.Package" />
+    <EntitySet Name="Pictures" EntityType="Self.Picture" />
+    <EntitySet Name="Shops" EntityType="Self.Shop" />
+    <EntitySet Name="ShopKeepers" EntityType="Self.ShopKeeper" />
+    <EntitySet Name="ShopPictures" EntityType="Self.ShopPicture" />
+    <AssociationSet Name="LoginId" Association="Self.LoginId">
+      <End Role="Login" EntitySet="Logins" />
+      <End Role="Customer" EntitySet="Customers" />
+    </AssociationSet>
+    <AssociationSet Name="PersonId" Association="Self.PersonId">
+      <End Role="Login" EntitySet="Logins" />
+      <End Role="ShopKeeper" EntitySet="ShopKeepers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Shop_Packages" Association="Self.FK_Shop_Packages">
+      <End Role="Packages" EntitySet="Packages" />
+      <End Role="Shop" EntitySet="Shops" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Shop_Packages1" Association="Self.FK_Shop_Packages1">
+      <End Role="Packages" EntitySet="Packages" />
+      <End Role="Shop" EntitySet="Shops" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ShopPictures_Pictures" Association="Self.FK_ShopPictures_Pictures">
+      <End Role="Pictures" EntitySet="Pictures" />
+      <End Role="ShopPictures" EntitySet="ShopPictures" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Shop" Association="Self.FK_Shop">
+      <End Role="Shop" EntitySet="Shops" />
+      <End Role="ShopKeeper" EntitySet="ShopKeepers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ShopPictures_Shop" Association="Self.FK_ShopPictures_Shop">
+      <End Role="Shop" EntitySet="Shops" />
+      <End Role="ShopPictures" EntitySet="ShopPictures" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

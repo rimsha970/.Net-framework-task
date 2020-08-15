@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ShopModelStoreContainer" CdmEntityContainer="buzzarEntities12">
+    <EntitySetMapping Name="Pictures">
+      <EntityTypeMapping TypeName="ShopModel.Picture">
+        <MappingFragment StoreEntitySet="Pictures">
+          <ScalarProperty Name="picture1" ColumnName="picture" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Shops">
+      <EntityTypeMapping TypeName="ShopModel.Shop">
+        <MappingFragment StoreEntitySet="Shop">
+          <ScalarProperty Name="Contact" ColumnName="Contact" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="PackageEnd" ColumnName="PackageEnd" />
+          <ScalarProperty Name="PackageStart" ColumnName="PackageStart" />
+          <ScalarProperty Name="AppPackage" ColumnName="AppPackage" />
+          <ScalarProperty Name="SubPackage" ColumnName="SubPackage" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ShopKeepers">
+      <EntityTypeMapping TypeName="ShopModel.ShopKeeper">
+        <MappingFragment StoreEntitySet="ShopKeeper">
+          <ScalarProperty Name="picture" ColumnName="picture" />
+          <ScalarProperty Name="ShopID" ColumnName="ShopID" />
+          <ScalarProperty Name="LoginId" ColumnName="LoginId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ShopPictures">
+      <EntityTypeMapping TypeName="ShopModel.ShopPicture">
+        <MappingFragment StoreEntitySet="ShopPictures">
+          <ScalarProperty Name="ShopPictureId" ColumnName="ShopPictureId" />
+          <ScalarProperty Name="PictureId" ColumnName="PictureId" />
+          <ScalarProperty Name="ShopId" ColumnName="ShopId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

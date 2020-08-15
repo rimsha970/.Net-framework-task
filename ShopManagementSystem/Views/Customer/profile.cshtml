@@ -1,0 +1,84 @@
+﻿@model Shoppack
+
+@{
+    ViewBag.Title = "profile";
+}
+
+<h2>profile!!</h2>
+
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+
+        <div style="float: left;  margin-left:10px; font-size:medium; display: inline-block; ">
+            <dt>
+                @Html.DisplayNameFor(model => model.person.Name)
+
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.person.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.person.Contact)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.person.Contact)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.person.Email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.person.Email)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.person.SecurityQuestion)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.person.SecurityQuestion)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.person.SecurityAnswer)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.person.SecurityAnswer)
+
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.customer.Address)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.customer.Address)
+
+            </dd>
+            <hr/>
+            <p>
+                @Html.ActionLink("Update Profile", "profileupdate", new { id = Model.customer.LoginId }) |
+                @Html.ActionLink("Back to Homepage", "Index", new { id = Model.customer.LoginId })
+            </p>
+
+        </div>
+
+</div>
+    </dl>
+</div>
+
+@if (ViewBag.Message != null)
+{
+    <script type="text/javascript">
+            window.onload = function () {
+                alert("@ViewBag.Message");
+            };
+    </script>
+
+
+}

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="75605fe10c8d4cf0b0f409d5baba5cd2" Name="Diagram1">
+        <EntityTypeShape EntityType="Bazaar.Category" Width="1.5" PointX="5.25" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Bazaar.Customer" Width="1.5" PointX="3" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Bazaar.Item" Width="1.5" PointX="7.5" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Bazaar.Login" Width="1.5" PointX="0.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Bazaar.Order" Width="1.5" PointX="5.25" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Bazaar.OrderDetail" Width="1.5" PointX="9.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Bazaar.Package" Width="1.5" PointX="0.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Bazaar.Picture" Width="1.5" PointX="9.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Bazaar.Saved" Width="1.5" PointX="9.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Bazaar.Shop" Width="1.5" PointX="3" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Bazaar.ShopKeeper" Width="1.5" PointX="5.25" PointY="10.875" IsExpanded="true" />
+        <AssociationConnector Association="Bazaar.FK_Categories_Shop" ManuallyRouted="false" />
+        <AssociationConnector Association="Bazaar.FK_Item_Categories" ManuallyRouted="false" />
+        <AssociationConnector Association="Bazaar.FK_Cart_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="Bazaar.FK_Order_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="Bazaar.LoginId" ManuallyRouted="false" />
+        <AssociationConnector Association="Bazaar.FK_Cart_Item" ManuallyRouted="false" />
+        <AssociationConnector Association="Bazaar.FK_OrderDetails_Item" ManuallyRouted="false" />
+        <AssociationConnector Association="Bazaar.FK_Pictures_Item" ManuallyRouted="false" />
+        <AssociationConnector Association="Bazaar.PersonId" ManuallyRouted="false" />
+        <AssociationConnector Association="Bazaar.FK_Order_Shop" ManuallyRouted="false" />
+        <AssociationConnector Association="Bazaar.FK_OrderDetails_Order" ManuallyRouted="false" />
+        <AssociationConnector Association="Bazaar.FK_Shop_Packages" ManuallyRouted="false" />
+        <AssociationConnector Association="Bazaar.FK_Shop_Packages1" ManuallyRouted="false" />
+        <AssociationConnector Association="Bazaar.FK_Pictures_Shop" ManuallyRouted="false" />
+        <AssociationConnector Association="Bazaar.FK_ShopKeeper_Shop" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

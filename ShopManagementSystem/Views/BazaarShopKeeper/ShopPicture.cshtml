@@ -1,0 +1,53 @@
+﻿@model Shoppack
+
+@{
+    ViewBag.Title = "ShopPicture";
+}
+
+<h2>ShopPicture</h2>
+
+
+@using (Html.BeginForm("ShopPicture", "BazaarShopKeeper", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Select Your Shop Picture!!</h4>
+        <hr />
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.picture.picture1, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" id="ImageFile1" name="ImageFile1" required>
+            </div>
+        </div>
+        @Html.HiddenFor(model => model.picture.Id)
+        @Html.HiddenFor(model => model.picture.ShopID)
+        @Html.HiddenFor(model=> model.shopKeeper.LoginId)
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+    
+}
+
+<div>
+    @Html.ActionLink("Back to Shop", "Details", new { id = Model.shopKeeper.LoginId })
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+@if (ViewBag.Message != null)
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            alert("@ViewBag.Message");
+        };
+    </script>
+
+
+}

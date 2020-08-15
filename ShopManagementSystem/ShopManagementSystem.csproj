@@ -1,0 +1,516 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{82975F0F-9A06-4C8A-93F9-58A482889ED9}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ShopManagementSystem</RootNamespace>
+    <AssemblyName>ShopManagementSystem</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <TargetFrameworkProfile />
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=__MvcPagesVersion__, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.2\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.2\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\BazaarShopKeeperController.cs" />
+    <Compile Include="Controllers\BuyPackageController.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\RegisterController.cs" />
+    <Compile Include="Controllers\ShopController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Admin.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Admin.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Admin.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Admin.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Admin.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Admin.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Bazaar.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Bazaar.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Bazaar.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Bazaar.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Bazaar.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Bazaar.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Category.cs">
+      <DependentUpon>Bazaar.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Customer.cs">
+      <DependentUpon>Bazaar.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Item.cs">
+      <DependentUpon>Bazaar.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Login.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Login.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Login.cs">
+      <DependentUpon>Bazaar.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Login.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Login.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Login1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Login.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Order.cs">
+      <DependentUpon>Bazaar.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OrderDetail.cs">
+      <DependentUpon>Bazaar.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Package.cs">
+      <DependentUpon>Bazaar.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Picture.cs">
+      <DependentUpon>Bazaar.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Register.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Register.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Register.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Register.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Register.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Register.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Saved.cs">
+      <DependentUpon>Bazaar.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Shop.cs">
+      <DependentUpon>Bazaar.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ShopKeeper.cs">
+      <DependentUpon>Bazaar.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\css\animate.min.css" />
+    <Content Include="Content\css\bootstrap.css" />
+    <Content Include="Content\css\flexslider.css" />
+    <Content Include="Content\css\font-awesome.css" />
+    <Content Include="Content\css\ken-burns.css" />
+    <Content Include="Content\css\menu.css" />
+    <Content Include="Content\css\owl.carousel.css" />
+    <Content Include="Content\css\style.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="Content\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Content\images\3.jpg" />
+    <Content Include="Content\images\5.jpg" />
+    <Content Include="Content\images\8.jpg" />
+    <Content Include="Content\images\a1.png" />
+    <Content Include="Content\images\a2.png" />
+    <Content Include="Content\images\a3.png" />
+    <Content Include="Content\images\a4.png" />
+    <Content Include="Content\images\a5.png" />
+    <Content Include="Content\images\a6.png" />
+    <Content Include="Content\images\b1.png" />
+    <Content Include="Content\images\b2.png" />
+    <Content Include="Content\images\b3.png" />
+    <Content Include="Content\images\b4.png" />
+    <Content Include="Content\images\bg.png" />
+    <Content Include="Content\images\bg1.jpg" />
+    <Content Include="Content\images\bg2.jpg" />
+    <Content Include="Content\images\e1.png" />
+    <Content Include="Content\images\e2.png" />
+    <Content Include="Content\images\e3.png" />
+    <Content Include="Content\images\e4.png" />
+    <Content Include="Content\images\f1.png" />
+    <Content Include="Content\images\f2.png" />
+    <Content Include="Content\images\f3.png" />
+    <Content Include="Content\images\f4.png" />
+    <Content Include="Content\images\f5.png" />
+    <Content Include="Content\images\f6.png" />
+    <Content Include="Content\images\f7.png" />
+    <Content Include="Content\images\f8.png" />
+    <Content Include="Content\images\f9.png" />
+    <Content Include="Content\images\g1.png" />
+    <Content Include="Content\images\g2.png" />
+    <Content Include="Content\images\g3.png" />
+    <Content Include="Content\images\g4.png" />
+    <Content Include="Content\images\g5.png" />
+    <Content Include="Content\images\g6.png" />
+    <Content Include="Content\images\h1.png" />
+    <Content Include="Content\images\h2.png" />
+    <Content Include="Content\images\h3.png" />
+    <Content Include="Content\images\h4.png" />
+    <Content Include="Content\images\h5.png" />
+    <Content Include="Content\images\img1.jpg" />
+    <Content Include="Content\images\img2.jpg" />
+    <Content Include="Content\images\img3.jpg" />
+    <Content Include="Content\images\m1.png" />
+    <Content Include="Content\images\m2.png" />
+    <Content Include="Content\images\m3.png" />
+    <Content Include="Content\images\m4.png" />
+    <Content Include="Content\images\move-up.png" />
+    <Content Include="Content\images\p1.png" />
+    <Content Include="Content\images\p2.png" />
+    <Content Include="Content\images\p3.png" />
+    <Content Include="Content\images\p4.png" />
+    <Content Include="Content\images\s1.jpg" />
+    <Content Include="Content\images\s1.png" />
+    <Content Include="Content\images\s2.jpg" />
+    <Content Include="Content\images\s2.png" />
+    <Content Include="Content\images\s3.jpg" />
+    <Content Include="Content\images\s3.png" />
+    <Content Include="Content\images\s4.png" />
+    <Content Include="Content\images\s5.png" />
+    <Content Include="Content\images\tick.png" />
+    <Content Include="Content\js\bootstrap.js" />
+    <Content Include="Content\js\custom.js" />
+    <Content Include="Content\js\easing.js" />
+    <Content Include="Content\js\imagezoom.js" />
+    <Content Include="Content\js\jquery-2.2.3.min.js" />
+    <Content Include="Content\js\jquery-scrolltofixed-min.js" />
+    <Content Include="Content\js\jquery.classycountdown.js" />
+    <Content Include="Content\js\jquery.flexslider.js" />
+    <Content Include="Content\js\jquery.jscrollpane.min.js" />
+    <Content Include="Content\js\jquery.knob.js" />
+    <Content Include="Content\js\jquery.marquee.min.js" />
+    <Content Include="Content\js\jquery.menu-aim.js" />
+    <Content Include="Content\js\jquery.mousewheel.js" />
+    <Content Include="Content\js\jquery.throttle.js" />
+    <Content Include="Content\js\main.js" />
+    <Content Include="Content\js\minicart.js" />
+    <Content Include="Content\js\move-top.js" />
+    <Content Include="Content\js\owl.carousel.js" />
+    <Content Include="Models\Admin.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Admin.edmx</DependentUpon>
+      <LastGenOutput>Admin.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Admin.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Admin.edmx</DependentUpon>
+      <LastGenOutput>Admin.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Bazaar.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Bazaar.edmx</DependentUpon>
+      <LastGenOutput>Bazaar.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Bazaar.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Bazaar.edmx</DependentUpon>
+      <LastGenOutput>Bazaar.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Login.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Login.edmx</DependentUpon>
+      <LastGenOutput>Login.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Login.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Login.edmx</DependentUpon>
+      <LastGenOutput>Login1.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Register.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Register.edmx</DependentUpon>
+      <LastGenOutput>Register.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Register.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Register.edmx</DependentUpon>
+      <LastGenOutput>Register.cs</LastGenOutput>
+    </Content>
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Content\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\fonts\FontAwesome.otf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
+    <EntityDeploy Include="Models\Login.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Login.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Login.edmx.diagram">
+      <DependentUpon>Login.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\Register.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Register.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Register.edmx.diagram">
+      <DependentUpon>Register.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\Admin.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Admin.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Admin.edmx.diagram">
+      <DependentUpon>Admin.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\Bazaar.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Bazaar.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Bazaar.edmx.diagram">
+      <DependentUpon>Bazaar.edmx</DependentUpon>
+    </Content>
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="w3layouts-License.txt" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Login\view.cshtml" />
+    <Content Include="Views\Register\Create.cshtml" />
+    <Content Include="Views\Admin\Create.cshtml" />
+    <Content Include="Views\Admin\Edit.cshtml" />
+    <Content Include="Views\Admin\Delete.cshtml" />
+    <Content Include="Views\Admin\Details.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Home\Help.cshtml" />
+    <Content Include="Views\BuyPackage\Index.cshtml" />
+    <Content Include="Views\BuyPackage\ExtraPackage.cshtml" />
+    <Content Include="Views\BuyPackage\Package.cshtml" />
+    <Content Include="Views\Shop\Create1.cshtml" />
+    <Content Include="Views\Shop\Create4.cshtml" />
+    <Content Include="Views\Shop\Create3.cshtml" />
+    <Content Include="Views\BazaarShopKeeper\Details.cshtml" />
+    <Content Include="Views\BazaarShopKeeper\Edit.cshtml" />
+    <Content Include="Views\BazaarShopKeeper\profile.cshtml" />
+    <Content Include="Views\BazaarShopKeeper\profileupdate.cshtml" />
+    <Content Include="Views\BazaarShopKeeper\Category.cshtml" />
+    <Content Include="Views\BazaarShopKeeper\CategoryIndex.cshtml" />
+    <Content Include="Views\BazaarShopKeeper\ShopPicture.cshtml" />
+    <Content Include="Views\BazaarShopKeeper\AddItem.cshtml" />
+    <Content Include="Views\BazaarShopKeeper\ItemIndex.cshtml" />
+    <Content Include="Views\BazaarShopKeeper\ItemDetails.cshtml" />
+    <Content Include="Views\BazaarShopKeeper\CategoryEdit.cshtml" />
+    <Content Include="Views\BazaarShopKeeper\ItemEdit.cshtml" />
+    <Content Include="Views\BazaarShopKeeper\ItemDelete.cshtml" />
+    <Content Include="Views\BazaarShopKeeper\CategoryDelete.cshtml" />
+    <Content Include="Views\Home\ItemDetails.cshtml" />
+    <Content Include="Views\Login\ForgotPassword.cshtml" />
+    <Content Include="Views\Home\Categories.cshtml" />
+    <Content Include="Views\Customer\Index.cshtml" />
+    <Content Include="Views\Customer\wishlist.cshtml" />
+    <Content Include="Views\Customer\profile.cshtml" />
+    <Content Include="Views\Customer\profileupdate.cshtml" />
+    <Content Include="Views\Customer\savelist.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Image\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="packages.config" />
+    <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>19445</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:14717/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

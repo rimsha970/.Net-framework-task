@@ -1,0 +1,69 @@
+﻿@model ItemPicture
+
+@{
+    ViewBag.Title = "ItemDetails";
+}
+
+<h2>@ViewData["item"]=></h2>
+<hr />
+
+
+@foreach (var item in Model.picturelist)
+{
+    <tr>
+        @{
+    String img64 = Convert.ToBase64String(item.picture1);
+    String img64Url = string.Format("data:image/" + item.picture1 + ";base64,{0}", img64); //imagetype can be e.g. gif, jpeg, png etc.
+        }
+        <img src="@img64Url" imagealign="right" widht="200" height="200 " />
+
+    </tr>
+}
+<dt>
+    @Html.DisplayNameFor(model => model.item.Name):
+
+
+
+
+    @Html.DisplayFor(model => model.item.Name)
+</dt>
+
+<dt>
+    @Html.DisplayNameFor(model => model.item.Description):
+
+
+
+    @Html.DisplayFor(model => model.item.Description)
+</dt>
+
+
+<dt>
+    @Html.DisplayNameFor(model => model.item.Price):
+
+
+
+    @Html.DisplayFor(model => model.item.Price)
+</dt>
+<dt>
+    @Html.DisplayNameFor(model => model.item.Available)
+
+
+
+    @Html.DisplayFor(model => model.item.Available)
+</dt>
+
+<dt>
+    @Html.DisplayNameFor(model => model.item.ComingSoon)
+
+
+
+    @Html.DisplayFor(model => model.item.ComingSoon)
+
+</dt>
+<hr/>
+<h4>
+    @Html.ActionLink("Shopping Cart", "view") |
+    @Html.ActionLink("Save", "view") |
+    @Html.ActionLink("Back to Homepage", "Index")
+</h4>   
+

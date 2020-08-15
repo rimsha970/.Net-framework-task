@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "Contact";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<address>
+    Smaer Bazar, Libert Market<br />
+    Lahore<br />
+    <abbr title="Phone">P:</abbr>
+    0321-0987654
+</address>
+
+<address>
+    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
+    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>\
+</address>
+<div class="top_bar">
+    <div class="container">
+        <div class="row">
+            <div class="col d-flex flex-row">
+                <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="images/phone.png" alt=""></div>+38 068 005 3570</div>
+                <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="images/mail.png" alt=""></div><a href="mailto:fastsales@gmail.com">fastsales@gmail.com</a></div>
+                <div class="top_bar_content ml-auto">
+                    <div>
+                        @Html.ActionLink("Back to Homepage", "Index")
+                    </div>

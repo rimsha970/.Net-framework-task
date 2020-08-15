@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="signupModelStoreContainer" CdmEntityContainer="buzzarEntities7">
+    <EntitySetMapping Name="Customers">
+      <EntityTypeMapping TypeName="signupModel.Customer">
+        <MappingFragment StoreEntitySet="Customer">
+          <ScalarProperty Name="LoginId" ColumnName="LoginId" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Logins">
+      <EntityTypeMapping TypeName="signupModel.Login">
+        <MappingFragment StoreEntitySet="Login">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Contact" ColumnName="Contact" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="SecurityQuestion" ColumnName="SecurityQuestion" />
+          <ScalarProperty Name="SecurityAnswer" ColumnName="SecurityAnswer" />
+          <ScalarProperty Name="LoginType" ColumnName="LoginType" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Packages">
+      <EntityTypeMapping TypeName="signupModel.Package">
+        <MappingFragment StoreEntitySet="Packages">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pictures">
+      <EntityTypeMapping TypeName="signupModel.Picture">
+        <MappingFragment StoreEntitySet="Pictures">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="picture1" ColumnName="picture" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Shops">
+      <EntityTypeMapping TypeName="signupModel.Shop">
+        <MappingFragment StoreEntitySet="Shop">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="SubPackage" ColumnName="SubPackage" />
+          <ScalarProperty Name="AppPackage" ColumnName="AppPackage" />
+          <ScalarProperty Name="PackageStart" ColumnName="PackageStart" />
+          <ScalarProperty Name="PackageEnd" ColumnName="PackageEnd" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Contact" ColumnName="Contact" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ShopKeepers">
+      <EntityTypeMapping TypeName="signupModel.ShopKeeper">
+        <MappingFragment StoreEntitySet="ShopKeeper">
+          <ScalarProperty Name="LoginId" ColumnName="LoginId" />
+          <ScalarProperty Name="ShopID" ColumnName="ShopID" />
+          <ScalarProperty Name="picture" ColumnName="picture" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ShopPictures">
+      <EntityTypeMapping TypeName="signupModel.ShopPicture">
+        <MappingFragment StoreEntitySet="ShopPictures">
+          <ScalarProperty Name="ShopId" ColumnName="ShopId" />
+          <ScalarProperty Name="PictureId" ColumnName="PictureId" />
+          <ScalarProperty Name="ShopPictureId" ColumnName="ShopPictureId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

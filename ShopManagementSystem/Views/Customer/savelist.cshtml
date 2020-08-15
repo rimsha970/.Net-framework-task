@@ -1,0 +1,69 @@
+﻿@model Shoppack
+
+@{
+    ViewBag.Title = "savelist";
+}
+
+<h2>savelist</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model =>model.item.Name)
+        </th>
+       
+        <th>
+            @Html.DisplayNameFor(model =>model.item.Description)
+        </th>
+        
+        <th>
+            @Html.DisplayNameFor(model =>model.saved.Quantity)
+        </th>
+        
+        <th>
+            @Html.DisplayNameFor(model =>model.item.Price) (per 1item)
+        </th>
+        
+    </tr>
+@foreach (var a in Model.savelist)
+{
+    <tr>
+        @foreach (var b in Model.itemlist.Where(x => x.Id == a.ItemId))
+        {
+
+            <td>
+                @Html.DisplayFor(model =>b.Name)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => b.Description)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => a.Quantity)
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => b.Price) 
+            </td>
+            <td>
+
+                @Html.ActionLink("Buy", "cart", new { id = a.ItemId }) |
+                @Html.ActionLink("Remove", "itemDelete", new { id = a.ItemId })
+            </td>
+
+        }
+    </tr>
+}
+
+</table>
+@if (ViewBag.Message != null)
+{
+    <script type="text/javascript">
+            window.onload = function () {
+                alert("@ViewBag.Message");
+            };
+    </script>
+
+
+}

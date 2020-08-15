@@ -1,0 +1,398 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Bazaar" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="ShopID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Shop" Relationship="Self.FK_Categories_Shop" FromRole="Categories" ToRole="Shop" />
+    <NavigationProperty Name="Items" Relationship="Self.FK_Item_Categories" FromRole="Categories" ToRole="Item" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="LoginId" />
+    </Key>
+    <Property Name="LoginId" Type="Int32" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Saveds" Relationship="Self.FK_Cart_Customer" FromRole="Customer" ToRole="Saved" />
+    <NavigationProperty Name="Orders" Relationship="Self.FK_Order_Customer" FromRole="Customer" ToRole="Order" />
+    <NavigationProperty Name="Login" Relationship="Self.LoginId" FromRole="Customer" ToRole="Login" />
+  </EntityType>
+  <EntityType Name="Item">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Available" Type="Boolean" Nullable="false" />
+    <Property Name="ComingSoon" Type="Boolean" Nullable="false" />
+    <Property Name="CategoryId" Type="Int32" Nullable="false" />
+    <Property Name="Price" Type="Int32" Nullable="false" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Category" Relationship="Self.FK_Item_Categories" FromRole="Item" ToRole="Categories" />
+    <NavigationProperty Name="Saveds" Relationship="Self.FK_Cart_Item" FromRole="Item" ToRole="Saved" />
+    <NavigationProperty Name="OrderDetails" Relationship="Self.FK_OrderDetails_Item" FromRole="Item" ToRole="OrderDetails" />
+    <NavigationProperty Name="Pictures" Relationship="Self.FK_Pictures_Item" FromRole="Item" ToRole="Pictures" />
+  </EntityType>
+  <EntityType Name="Login">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Contact" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SecurityQuestion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SecurityAnswer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="LoginType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Customer" Relationship="Self.LoginId" FromRole="Login" ToRole="Customer" />
+    <NavigationProperty Name="ShopKeeper" Relationship="Self.PersonId" FromRole="Login" ToRole="ShopKeeper" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerId" Type="Int32" Nullable="false" />
+    <Property Name="ShopID" Type="Int32" Nullable="false" />
+    <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Track" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Paypal" Type="Boolean" Nullable="false" />
+    <Property Name="DeliveryDate" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Customer" Relationship="Self.FK_Order_Customer" FromRole="Order" ToRole="Customer" />
+    <NavigationProperty Name="Shop" Relationship="Self.FK_Order_Shop" FromRole="Order" ToRole="Shop" />
+    <NavigationProperty Name="OrderDetails" Relationship="Self.FK_OrderDetails_Order" FromRole="Order" ToRole="OrderDetails" />
+  </EntityType>
+  <EntityType Name="OrderDetail">
+    <Key>
+      <PropertyRef Name="OrderDetailsId" />
+    </Key>
+    <Property Name="OrderId" Type="Int32" Nullable="false" />
+    <Property Name="ItemId" Type="Int32" Nullable="false" />
+    <Property Name="Quantity" Type="Double" Nullable="false" />
+    <Property Name="OrderDetailsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Item" Relationship="Self.FK_OrderDetails_Item" FromRole="OrderDetails" ToRole="Item" />
+    <NavigationProperty Name="Order" Relationship="Self.FK_OrderDetails_Order" FromRole="OrderDetails" ToRole="Order" />
+  </EntityType>
+  <EntityType Name="Package">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Price" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Shops" Relationship="Self.FK_Shop_Packages" FromRole="Packages" ToRole="Shop" />
+    <NavigationProperty Name="Shops1" Relationship="Self.FK_Shop_Packages1" FromRole="Packages" ToRole="Shop" />
+  </EntityType>
+  <EntityType Name="Picture">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="picture1" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+    <Property Name="ItemID" Type="Int32" />
+    <Property Name="ShopID" Type="Int32" />
+    <NavigationProperty Name="Item" Relationship="Self.FK_Pictures_Item" FromRole="Pictures" ToRole="Item" />
+    <NavigationProperty Name="Shop" Relationship="Self.FK_Pictures_Shop" FromRole="Pictures" ToRole="Shop" />
+  </EntityType>
+  <EntityType Name="Saved">
+    <Key>
+      <PropertyRef Name="SavedId" />
+    </Key>
+    <Property Name="CustomerId" Type="Int32" Nullable="false" />
+    <Property Name="ItemId" Type="Int32" Nullable="false" />
+    <Property Name="Quantity" Type="Double" />
+    <Property Name="InCart" Type="Boolean" />
+    <Property Name="SavedId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Customer" Relationship="Self.FK_Cart_Customer" FromRole="Saved" ToRole="Customer" />
+    <NavigationProperty Name="Item" Relationship="Self.FK_Cart_Item" FromRole="Saved" ToRole="Item" />
+  </EntityType>
+  <EntityType Name="Shop">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="SubPackage" Type="Int32" Nullable="false" />
+    <Property Name="AppPackage" Type="Int32" />
+    <Property Name="PStart" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="PEnd" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Contact" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Categories" Relationship="Self.FK_Categories_Shop" FromRole="Shop" ToRole="Categories" />
+    <NavigationProperty Name="Orders" Relationship="Self.FK_Order_Shop" FromRole="Shop" ToRole="Order" />
+    <NavigationProperty Name="Package" Relationship="Self.FK_Shop_Packages" FromRole="Shop" ToRole="Packages" />
+    <NavigationProperty Name="Package1" Relationship="Self.FK_Shop_Packages1" FromRole="Shop" ToRole="Packages" />
+    <NavigationProperty Name="Pictures" Relationship="Self.FK_Pictures_Shop" FromRole="Shop" ToRole="Pictures" />
+    <NavigationProperty Name="ShopKeepers" Relationship="Self.FK_ShopKeeper_Shop" FromRole="Shop" ToRole="ShopKeeper" />
+  </EntityType>
+  <EntityType Name="ShopKeeper">
+    <Key>
+      <PropertyRef Name="LoginId" />
+    </Key>
+    <Property Name="LoginId" Type="Int32" Nullable="false" />
+    <Property Name="ShopID" Type="Int32" Nullable="false" />
+    <Property Name="picture" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="Login" Relationship="Self.PersonId" FromRole="ShopKeeper" ToRole="Login" />
+    <NavigationProperty Name="Shop" Relationship="Self.FK_ShopKeeper_Shop" FromRole="ShopKeeper" ToRole="Shop" />
+  </EntityType>
+  <Association Name="FK_Categories_Shop">
+    <End Role="Shop" Type="Self.Shop" Multiplicity="1" />
+    <End Role="Categories" Type="Self.Category" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Shop">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Categories">
+        <PropertyRef Name="ShopID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Item_Categories">
+    <End Role="Categories" Type="Self.Category" Multiplicity="1" />
+    <End Role="Item" Type="Self.Item" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categories">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Item">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cart_Customer">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+    <End Role="Saved" Type="Self.Saved" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="LoginId" />
+      </Principal>
+      <Dependent Role="Saved">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_Customer">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="LoginId" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="LoginId">
+    <End Role="Login" Type="Self.Login" Multiplicity="1" />
+    <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Login">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Customer">
+        <PropertyRef Name="LoginId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cart_Item">
+    <End Role="Item" Type="Self.Item" Multiplicity="1" />
+    <End Role="Saved" Type="Self.Saved" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Item">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Saved">
+        <PropertyRef Name="ItemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderDetails_Item">
+    <End Role="Item" Type="Self.Item" Multiplicity="1" />
+    <End Role="OrderDetails" Type="Self.OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Item">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OrderDetails">
+        <PropertyRef Name="ItemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Pictures_Item">
+    <End Role="Item" Type="Self.Item" Multiplicity="0..1" />
+    <End Role="Pictures" Type="Self.Picture" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Item">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Pictures">
+        <PropertyRef Name="ItemID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PersonId">
+    <End Role="Login" Type="Self.Login" Multiplicity="1" />
+    <End Role="ShopKeeper" Type="Self.ShopKeeper" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Login">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ShopKeeper">
+        <PropertyRef Name="LoginId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_Shop">
+    <End Role="Shop" Type="Self.Shop" Multiplicity="1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Shop">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="ShopID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderDetails_Order">
+    <End Role="Order" Type="Self.Order" Multiplicity="1" />
+    <End Role="OrderDetails" Type="Self.OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OrderDetails">
+        <PropertyRef Name="OrderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Shop_Packages">
+    <End Role="Packages" Type="Self.Package" Multiplicity="1" />
+    <End Role="Shop" Type="Self.Shop" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Packages">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Shop">
+        <PropertyRef Name="SubPackage" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Shop_Packages1">
+    <End Role="Packages" Type="Self.Package" Multiplicity="0..1" />
+    <End Role="Shop" Type="Self.Shop" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Packages">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Shop">
+        <PropertyRef Name="AppPackage" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Pictures_Shop">
+    <End Role="Shop" Type="Self.Shop" Multiplicity="0..1" />
+    <End Role="Pictures" Type="Self.Picture" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Shop">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Pictures">
+        <PropertyRef Name="ShopID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ShopKeeper_Shop">
+    <End Role="Shop" Type="Self.Shop" Multiplicity="1" />
+    <End Role="ShopKeeper" Type="Self.ShopKeeper" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Shop">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ShopKeeper">
+        <PropertyRef Name="ShopID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="buzzarEntities22" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Categories" EntityType="Self.Category" />
+    <EntitySet Name="Customers" EntityType="Self.Customer" />
+    <EntitySet Name="Items" EntityType="Self.Item" />
+    <EntitySet Name="Logins" EntityType="Self.Login" />
+    <EntitySet Name="Orders" EntityType="Self.Order" />
+    <EntitySet Name="OrderDetails" EntityType="Self.OrderDetail" />
+    <EntitySet Name="Packages" EntityType="Self.Package" />
+    <EntitySet Name="Pictures" EntityType="Self.Picture" />
+    <EntitySet Name="Saveds" EntityType="Self.Saved" />
+    <EntitySet Name="Shops" EntityType="Self.Shop" />
+    <EntitySet Name="ShopKeepers" EntityType="Self.ShopKeeper" />
+    <AssociationSet Name="FK_Categories_Shop" Association="Self.FK_Categories_Shop">
+      <End Role="Shop" EntitySet="Shops" />
+      <End Role="Categories" EntitySet="Categories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Item_Categories" Association="Self.FK_Item_Categories">
+      <End Role="Categories" EntitySet="Categories" />
+      <End Role="Item" EntitySet="Items" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cart_Customer" Association="Self.FK_Cart_Customer">
+      <End Role="Customer" EntitySet="Customers" />
+      <End Role="Saved" EntitySet="Saveds" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_Customer" Association="Self.FK_Order_Customer">
+      <End Role="Customer" EntitySet="Customers" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="LoginId" Association="Self.LoginId">
+      <End Role="Login" EntitySet="Logins" />
+      <End Role="Customer" EntitySet="Customers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cart_Item" Association="Self.FK_Cart_Item">
+      <End Role="Item" EntitySet="Items" />
+      <End Role="Saved" EntitySet="Saveds" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderDetails_Item" Association="Self.FK_OrderDetails_Item">
+      <End Role="Item" EntitySet="Items" />
+      <End Role="OrderDetails" EntitySet="OrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Pictures_Item" Association="Self.FK_Pictures_Item">
+      <End Role="Item" EntitySet="Items" />
+      <End Role="Pictures" EntitySet="Pictures" />
+    </AssociationSet>
+    <AssociationSet Name="PersonId" Association="Self.PersonId">
+      <End Role="Login" EntitySet="Logins" />
+      <End Role="ShopKeeper" EntitySet="ShopKeepers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_Shop" Association="Self.FK_Order_Shop">
+      <End Role="Shop" EntitySet="Shops" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderDetails_Order" Association="Self.FK_OrderDetails_Order">
+      <End Role="Order" EntitySet="Orders" />
+      <End Role="OrderDetails" EntitySet="OrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Shop_Packages" Association="Self.FK_Shop_Packages">
+      <End Role="Packages" EntitySet="Packages" />
+      <End Role="Shop" EntitySet="Shops" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Shop_Packages1" Association="Self.FK_Shop_Packages1">
+      <End Role="Packages" EntitySet="Packages" />
+      <End Role="Shop" EntitySet="Shops" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Pictures_Shop" Association="Self.FK_Pictures_Shop">
+      <End Role="Shop" EntitySet="Shops" />
+      <End Role="Pictures" EntitySet="Pictures" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ShopKeeper_Shop" Association="Self.FK_ShopKeeper_Shop">
+      <End Role="Shop" EntitySet="Shops" />
+      <End Role="ShopKeeper" EntitySet="ShopKeepers" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

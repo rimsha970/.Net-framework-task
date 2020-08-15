@@ -1,0 +1,58 @@
+﻿@model IEnumerable<ShopManagementSystem.Models.Package>
+
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<h4>Create your own shop now!!</h4>
+<body>
+    <h4>Step1:- Buy Package</h4>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.ActionLink("Buy", "ExtraPackage", new { @id1 = item.Id ,@id2=@ViewData["Id"]})
+               
+              
+            </td>
+        </tr>
+    }
+
+    
+    </table>
+    @Html.ActionLink("Login to your account","view","Login") |
+    @Html.ActionLink("Back to Signup ", "Create","Register")
+    @if (ViewBag.Message != null)
+    {
+        <script type="text/javascript">
+            window.onload = function () {
+                alert("@ViewBag.Message");
+            };
+        </script>
+        
+        
+    }
+    
+</body>
+</html>

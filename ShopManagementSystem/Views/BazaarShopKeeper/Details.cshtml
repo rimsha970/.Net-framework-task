@@ -1,0 +1,185 @@
+﻿@model Shoppack
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Geocoding service</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <style>
+        /* Always set the map height explicitly to define the size of the div
+                * element that contains the map. */
+        #map {
+            height: 100%;
+        }
+        /* Optional: Makes the sample page fill the window. */
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        #floating-panel {
+            position: absolute;
+            top: 10px;
+            left: 25%;
+            z-index: 5;
+            background-color: #fff;
+            padding: 5px;
+            border: 1px solid #999;
+            text-align: center;
+            font-family: 'Roboto','sans-serif';
+            line-height: 30px;
+            padding-left: 10px;
+        }
+    </style>
+    <h4><input id="submit" type="button" value="Show my location"></h4> 
+    </div>
+    <div id="map"></div>
+    <script>
+
+
+        function initialize() {
+
+            //  var geocoder = new google.maps.Geocoder();
+            // var latlng = new google.maps.LatLng(-34.397, 150.644);
+            // var myOptions = {
+            //   zoom: 8,
+            //   center: latlng,
+
+            //   mapTypeId: google.maps.MapTypeId.ROADMAP
+            // };
+            //   //map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+            //// map = new google.maps.Map(document.getElementById('map'), myOptions);
+            //   // geocodeAddress(geocoder, map);
+            // document.getElementById('submit').addEventListener('click', function() {
+            //     geocodeAddress(geocoder, map);}
+
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 8,
+                // center: { lat: -34.397, lng: 150.644 }
+            });
+            var geocoder = new google.maps.Geocoder();
+
+            document.getElementById('submit').addEventListener('click', function () {
+                geocodeAddress(geocoder, map);
+            });
+        }
+
+        function geocodeAddress(geocoder, resultsMap) {
+            var address = '@Model.shop.Address';
+            // map = new google.maps.Map(document.getElementById('map'), myOptions);
+            // var address = document.getElementById('address').value;
+            geocoder.geocode({ 'address': address }, function (results, status) {
+                if (status === 'OK') {
+                    resultsMap.setCenter(results[0].geometry.location);
+
+                    var marker = new google.maps.Marker({
+                        map: resultsMap,
+                        position: results[0].geometry.location
+
+                    });
+                } else {
+                    alert('Geocode was not successful for the following reason: ' + status);
+                }
+            });
+        }
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAbW3l8IYEIxn78g07sOS__t0aanLa4BdY&callback=initialize"
+            type="text/javascript">
+        google.maps.event.addDomListener(window, 'load', initialize);</script>
+    <body onload="initialize()">
+        <div id="map" style="width: 320px; height: 480px;"></div>
+        
+            <h2>Welcome to your Shop:-</h2>
+
+
+
+            @Html.ActionLink("Your Profile", "Profile", new { id = Model.shop.Id }) |
+
+            @Html.ActionLink("Categories", "CategoryIndex", new { idshop = Model.shop.Id }) |
+
+            @Html.ActionLink("Change Shop Picture", "ShopPicture", new { id = Model.shop.Id }) |
+
+            @Html.ActionLink("Update Shop", "Edit", new { id = Model.shop.Id }) |
+
+            @Html.ActionLink("Log out!", "Index", "Home")<hr />
+
+            <dl class="dl-horizontal"></dl>
+      
+        <div>
+
+            @{
+                String img64 = Convert.ToBase64String(Model.picture.picture1);
+                String img64Url = string.Format("data:image/" + Model.picture.picture1 + ";base64,{0}", img64); //imagetype can be e.g. gif, jpeg, png etc.
+            }
+            <img src="@img64Url" imagealign="Middle" widht="600" height="600" />
+        </div>
+        <h2>Shop Details!</h2>
+        <hr />
+
+        <h4>
+            @Html.DisplayNameFor(model => model.shop.Name):
+        </h4>
+        <dd>
+            @Html.DisplayFor(model => model.shop.Name)
+        </dd>
+
+        <h4>
+            @Html.DisplayNameFor(model => model.shop.Description):
+        </h4>
+        <dd>
+            @Html.DisplayFor(model => model.shop.Description)
+        </dd>
+        <h4>
+            @Html.DisplayNameFor(model => model.shop.PStart):
+        </h4>
+        <dd>
+            @Html.DisplayFor(model => model.shop.PStart)
+        </dd>
+        <h4>
+            @Html.DisplayNameFor(model => model.shop.PEnd):
+        </h4>
+        <dd>
+            @Html.DisplayFor(model => model.shop.PEnd)
+        </dd>
+
+        <h4>
+            @Html.DisplayNameFor(model => model.shop.Address):
+        </h4>
+        <dd>
+            @Html.DisplayFor(model => model.shop.Address)
+        </dd>
+        <h4>
+            @Html.DisplayNameFor(model => model.shop.Contact):
+        </h4>
+
+        <dd>
+            @Html.DisplayFor(model => model.shop.Contact)
+        </dd>
+
+
+
+        <hr />
+        <h6>1)To see your profile, click on "Your Profile" icon!!</h6>
+        <h6>2)To see categories in your shop, click on "Categories" icon!!</h6>
+        <h6>3)To change your shop picture,click on "Change Shop Picture" icon!!</h6>
+        <h6>4)To update your shop information, click on "Update Shop" icon!!</h6>
+        <p>
+
+            <div>@Html.ActionLink("Back to Homepage", "Index", "Home")</div>
+
+        </p>
+        @if (ViewBag.Message != null)
+        {
+            <script type="text/javascript">
+                window.onload = function () {
+                    alert("@ViewBag.Message");
+                };
+            </script>
+
+
+        }
+    </body>
+</html>

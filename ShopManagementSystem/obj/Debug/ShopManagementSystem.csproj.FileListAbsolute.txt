@@ -1,0 +1,62 @@
+C:\Users\Rimsha Shahzad\Documents\Visual Studio 2013\Projects\ShopManagementSystem\ShopManagementSystem\bin\ShopManagementSystem.dll.config
+C:\Users\Rimsha Shahzad\Documents\Visual Studio 2013\Projects\ShopManagementSystem\ShopManagementSystem\bin\ShopManagementSystem.dll
+C:\Users\Rimsha Shahzad\Documents\Visual Studio 2013\Projects\ShopManagementSystem\ShopManagementSystem\bin\ShopManagementSystem.pdb
+C:\Users\Rimsha Shahzad\Documents\Visual Studio 2013\Projects\ShopManagementSystem\ShopManagementSystem\bin\Antlr3.Runtime.dll
+C:\Users\Rimsha Shahzad\Documents\Visual Studio 2013\Projects\ShopManagementSystem\ShopManagementSystem\bin\EntityFramework.dll
+C:\Users\Rimsha Shahzad\Documents\Visual Studio 2013\Projects\ShopManagementSystem\ShopManagementSystem\bin\EntityFramework.SqlServer.dll
+C:\Users\Rimsha Shahzad\Documents\Visual Studio 2013\Projects\ShopManagementSystem\ShopManagementSystem\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Rimsha Shahzad\Documents\Visual Studio 2013\Projects\ShopManagementSystem\ShopManagementSystem\bin\Newtonsoft.Json.dll
+C:\Users\Rimsha Shahzad\Documents\Visual Studio 2013\Projects\ShopManagementSystem\ShopManagementSystem\bin\System.Web.Helpers.dll
+C:\Users\Rimsha Shahzad\Documents\Visual Studio 2013\Projects\ShopManagementSystem\ShopManagementSystem\bin\System.Web.Mvc.dll
+C:\Users\Rimsha Shahzad\Documents\Visual Studio 2013\Projects\ShopManagementSystem\ShopManagementSystem\bin\System.Web.Optimization.dll
+C:\Users\Rimsha Shahzad\Documents\Visual Studio 2013\Projects\ShopManagementSystem\ShopManagementSystem\bin\System.Web.Razor.dll
+C:\Users\Rimsha Shahzad\Documents\Visual Studio 2013\Projects\ShopManagementSystem\ShopManagementSystem\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Rimsha Shahzad\Documents\Visual Studio 2013\Projects\ShopManagementSystem\ShopManagementSystem\bin\System.Web.WebPages.dll
+C:\Users\Rimsha Shahzad\Documents\Visual Studio 2013\Projects\ShopManagementSystem\ShopManagementSystem\bin\System.Web.WebPages.Razor.dll
+C:\Users\Rimsha Shahzad\Documents\Visual Studio 2013\Projects\ShopManagementSystem\ShopManagementSystem\bin\WebGrease.dll
+C:\Users\Rimsha Shahzad\Documents\Visual Studio 2013\Projects\ShopManagementSystem\ShopManagementSystem\bin\EntityFramework.xml
+C:\Users\Rimsha Shahzad\Documents\Visual Studio 2013\Projects\ShopManagementSystem\ShopManagementSystem\bin\EntityFramework.SqlServer.xml
+C:\Users\Rimsha Shahzad\Documents\Visual Studio 2013\Projects\ShopManagementSystem\ShopManagementSystem\bin\System.Web.Helpers.xml
+C:\Users\Rimsha Shahzad\Documents\Visual Studio 2013\Projects\ShopManagementSystem\ShopManagementSystem\bin\System.Web.Mvc.xml
+C:\Users\Rimsha Shahzad\Documents\Visual Studio 2013\Projects\ShopManagementSystem\ShopManagementSystem\bin\System.Web.Optimization.xml
+C:\Users\Rimsha Shahzad\Documents\Visual Studio 2013\Projects\ShopManagementSystem\ShopManagementSystem\bin\System.Web.Razor.xml
+C:\Users\Rimsha Shahzad\Documents\Visual Studio 2013\Projects\ShopManagementSystem\ShopManagementSystem\bin\System.Web.WebPages.xml
+C:\Users\Rimsha Shahzad\Documents\Visual Studio 2013\Projects\ShopManagementSystem\ShopManagementSystem\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Rimsha Shahzad\Documents\Visual Studio 2013\Projects\ShopManagementSystem\ShopManagementSystem\bin\System.Web.WebPages.Razor.xml
+C:\Users\Rimsha Shahzad\Documents\Visual Studio 2013\Projects\ShopManagementSystem\ShopManagementSystem\bin\Antlr3.Runtime.pdb
+C:\Users\Rimsha Shahzad\Documents\Visual Studio 2013\Projects\ShopManagementSystem\ShopManagementSystem\bin\Newtonsoft.Json.xml
+C:\Users\Rimsha Shahzad\Documents\Visual Studio 2013\Projects\ShopManagementSystem\ShopManagementSystem\obj\Debug\ShopManagementSystem.csprojResolveAssemblyReference.cache
+C:\Users\Rimsha Shahzad\Documents\Visual Studio 2013\Projects\ShopManagementSystem\ShopManagementSystem\obj\Debug\ShopManagementSystem.dll
+C:\Users\Rimsha Shahzad\Documents\Visual Studio 2013\Projects\ShopManagementSystem\ShopManagementSystem\obj\Debug\ShopManagementSystem.pdb
+D:\CE\6th Semester\DBMS Lab\DBMS Final Project\ShopManagementSystem\ShopManagementSystem\bin\ShopManagementSystem.dll.config
+D:\CE\6th Semester\DBMS Lab\DBMS Final Project\ShopManagementSystem\ShopManagementSystem\bin\ShopManagementSystem.dll
+D:\CE\6th Semester\DBMS Lab\DBMS Final Project\ShopManagementSystem\ShopManagementSystem\bin\ShopManagementSystem.pdb
+D:\CE\6th Semester\DBMS Lab\DBMS Final Project\ShopManagementSystem\ShopManagementSystem\bin\Antlr3.Runtime.dll
+D:\CE\6th Semester\DBMS Lab\DBMS Final Project\ShopManagementSystem\ShopManagementSystem\bin\EntityFramework.dll
+D:\CE\6th Semester\DBMS Lab\DBMS Final Project\ShopManagementSystem\ShopManagementSystem\bin\EntityFramework.SqlServer.dll
+D:\CE\6th Semester\DBMS Lab\DBMS Final Project\ShopManagementSystem\ShopManagementSystem\bin\Microsoft.Web.Infrastructure.dll
+D:\CE\6th Semester\DBMS Lab\DBMS Final Project\ShopManagementSystem\ShopManagementSystem\bin\Newtonsoft.Json.dll
+D:\CE\6th Semester\DBMS Lab\DBMS Final Project\ShopManagementSystem\ShopManagementSystem\bin\System.Web.Helpers.dll
+D:\CE\6th Semester\DBMS Lab\DBMS Final Project\ShopManagementSystem\ShopManagementSystem\bin\System.Web.Mvc.dll
+D:\CE\6th Semester\DBMS Lab\DBMS Final Project\ShopManagementSystem\ShopManagementSystem\bin\System.Web.Optimization.dll
+D:\CE\6th Semester\DBMS Lab\DBMS Final Project\ShopManagementSystem\ShopManagementSystem\bin\System.Web.Razor.dll
+D:\CE\6th Semester\DBMS Lab\DBMS Final Project\ShopManagementSystem\ShopManagementSystem\bin\System.Web.WebPages.Deployment.dll
+D:\CE\6th Semester\DBMS Lab\DBMS Final Project\ShopManagementSystem\ShopManagementSystem\bin\System.Web.WebPages.dll
+D:\CE\6th Semester\DBMS Lab\DBMS Final Project\ShopManagementSystem\ShopManagementSystem\bin\System.Web.WebPages.Razor.dll
+D:\CE\6th Semester\DBMS Lab\DBMS Final Project\ShopManagementSystem\ShopManagementSystem\bin\WebGrease.dll
+D:\CE\6th Semester\DBMS Lab\DBMS Final Project\ShopManagementSystem\ShopManagementSystem\bin\EntityFramework.xml
+D:\CE\6th Semester\DBMS Lab\DBMS Final Project\ShopManagementSystem\ShopManagementSystem\bin\EntityFramework.SqlServer.xml
+D:\CE\6th Semester\DBMS Lab\DBMS Final Project\ShopManagementSystem\ShopManagementSystem\bin\System.Web.Helpers.xml
+D:\CE\6th Semester\DBMS Lab\DBMS Final Project\ShopManagementSystem\ShopManagementSystem\bin\System.Web.Mvc.xml
+D:\CE\6th Semester\DBMS Lab\DBMS Final Project\ShopManagementSystem\ShopManagementSystem\bin\System.Web.Optimization.xml
+D:\CE\6th Semester\DBMS Lab\DBMS Final Project\ShopManagementSystem\ShopManagementSystem\bin\System.Web.Razor.xml
+D:\CE\6th Semester\DBMS Lab\DBMS Final Project\ShopManagementSystem\ShopManagementSystem\bin\System.Web.WebPages.xml
+D:\CE\6th Semester\DBMS Lab\DBMS Final Project\ShopManagementSystem\ShopManagementSystem\bin\System.Web.WebPages.Deployment.xml
+D:\CE\6th Semester\DBMS Lab\DBMS Final Project\ShopManagementSystem\ShopManagementSystem\bin\System.Web.WebPages.Razor.xml
+D:\CE\6th Semester\DBMS Lab\DBMS Final Project\ShopManagementSystem\ShopManagementSystem\bin\Antlr3.Runtime.pdb
+D:\CE\6th Semester\DBMS Lab\DBMS Final Project\ShopManagementSystem\ShopManagementSystem\bin\Newtonsoft.Json.xml
+D:\CE\6th Semester\DBMS Lab\DBMS Final Project\ShopManagementSystem\ShopManagementSystem\obj\Debug\ShopManagementSystem.csprojAssemblyReference.cache
+D:\CE\6th Semester\DBMS Lab\DBMS Final Project\ShopManagementSystem\ShopManagementSystem\obj\Debug\ShopManagementSystem.csproj.CoreCompileInputs.cache
+D:\CE\6th Semester\DBMS Lab\DBMS Final Project\ShopManagementSystem\ShopManagementSystem\obj\Debug\ShopManagementSystem.csproj.CopyComplete
+D:\CE\6th Semester\DBMS Lab\DBMS Final Project\ShopManagementSystem\ShopManagementSystem\obj\Debug\ShopManagementSystem.dll
+D:\CE\6th Semester\DBMS Lab\DBMS Final Project\ShopManagementSystem\ShopManagementSystem\obj\Debug\ShopManagementSystem.pdb

@@ -1,0 +1,74 @@
+﻿@model ItemPicture
+
+@{
+    ViewBag.Title = "ItemDetails";
+}
+
+<h2>Item Details!!</h2>
+<hr />
+
+
+@foreach (var item in Model.picturelist)
+{
+    <tr>
+           @{
+            String img64 = Convert.ToBase64String(item.picture1);
+            String img64Url = string.Format("data:image/" + item.picture1 + ";base64,{0}", img64); //imagetype can be e.g. gif, jpeg, png etc.
+            }
+            <img src="@img64Url" imagealign="right" widht="200" height="200 " />
+           
+        </tr> 
+}
+                <dt>
+                    @Html.DisplayNameFor(model => model.item.Name)
+
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.item.Name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.item.Description)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.item.Description)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.item.Quantity)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.item.Quantity)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.item.Price)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.item.Price)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.item.Available)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.item.Available)
+
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.item.ComingSoon)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.item.ComingSoon)
+
+                </dd>
+
+       
+<p>
+
+    @Html.ActionLink("Back to ItemList", "ItemIndex", new { id = (Convert.ToInt32(@ViewData["item"]) )})
+</p>

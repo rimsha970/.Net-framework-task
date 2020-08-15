@@ -1,0 +1,124 @@
+﻿@model Register
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+</head>
+<body>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Signup</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group">
+
+                @Html.LabelFor(model => model.person.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <input type="text" name="Name" class="lock" placeholder="Name" required="">
+                </div>
+            </div>
+
+            <div class="form-group">
+
+                @Html.LabelFor(model => model.person.Contact, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <input type="text" name="Contact" class="lock" placeholder="Contact" required="">
+                </div>
+            </div>
+
+
+            <div class="form-group">
+
+                @Html.LabelFor(model => model.person.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <input type="text" name="Email" class="lock" placeholder="Email" required="">
+                </div>
+            </div>
+            <div class="form-group">
+
+                @Html.LabelFor(model => model.customer.Address, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <input type="text" name="Address" class="lock" placeholder="Address" required="">
+                </div>
+            </div>
+
+
+
+
+            <div class="form-group">
+
+                @Html.LabelFor(model => model.person.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <input type="password" name="Password" class="lock" placeholder="Password" required="">
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.person.SecurityQuestion, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("SecurityQuestion", new List<SelectListItem>
+               {
+                   new SelectListItem{ Text="Nickname",Value="Nickname",Selected=true},
+                   new SelectListItem{ Text="Hobby",Value="Hobby"},
+                   new SelectListItem{ Text="CNIC last 3 digit",Value="Last 3 digit of your CNIC"}
+               }, "Select any question:")
+                    @Html.ValidationMessageFor(model => model.person.SecurityQuestion, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+
+                @Html.LabelFor(model => model.person.SecurityAnswer, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <input type="password" name="SecurityAnswer" class="lock" placeholder="Security Answer" required="">
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.person.LoginType, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("LoginType", new List<SelectListItem>
+                    {
+                     new SelectListItem{ Text="Customer",Value="Customer",Selected=true},
+                     new SelectListItem{ Text="Admin",Value="Admin"},
+                     new SelectListItem{ Text="Shopkeeper",Value="Shopkeeper"},
+                     }, "Select any option:")
+                    @Html.ValidationMessageFor(model => model.person.LoginType, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+
+                    <input type="submit" value="Register" class="btn btn-default" />
+                </div>
+            </div>
+
+        </div>
+    }
+    @if (ViewBag.Message != null)
+    {
+        <script type="text/javascript">
+            window.onload = function () {
+                alert("@ViewBag.Message");
+            };
+        </script>
+    }
+
+    <div>
+        @Html.ActionLink("Back to Homepage", "Index")
+    </div> 
+</body>
+</html>

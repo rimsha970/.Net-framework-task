@@ -1,0 +1,141 @@
+﻿@model ItemPicture
+
+@{
+    ViewBag.Title = "AddItem";
+}
+
+<h2>AddItem</h2>
+
+@using (Html.BeginForm("AddItem", "BazaarShopKeeper", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Add items to your shop!!</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.item.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.item.Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.item.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.item.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.item.Description, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.item.Description, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.item.Quantity, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.item.Quantity, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.item.Quantity, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.item.Price, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.item.Price, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.item.Price, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.item.Available, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("item.Available", new List<SelectListItem>
+               {
+                   new SelectListItem{ Text="True",Value="True",Selected=true},
+                   new SelectListItem{ Text="False",Value="False"},
+
+               }, "Select an option")
+                @Html.ValidationMessageFor(model => model.item.Available, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.item.ComingSoon, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("item.ComingSoon", new List<SelectListItem>
+               {
+                   new SelectListItem{ Text="True",Value="True",Selected=false},
+                   new SelectListItem{ Text="False",Value="False",Selected=true},
+
+               }, "Select an option")
+                @Html.ValidationMessageFor(model => model.item.ComingSoon, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <hr/>
+        <h4>Add Pictures of your Item!!</h4>
+        <div class="form-group">
+            @Html.LabelFor(model => model.picture1.picture1,"Picture 1", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" name="picture1.ImageFile1" required>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.picture2.picture1,"Picture 2",htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" name="picture2.ImageFile1" >
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.picture3.picture1, "Picture 3", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" name="picture3.ImageFile1" >
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.picture4.picture1, "Picture 4", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" name="picture4.ImageFile1" >
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.picture5.picture1, "Picture 5", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" name="picture5.ImageFile1" >
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Add item" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+
+<div>
+    @Html.ActionLink("Back to ItemsList", "ItemIndex", new { id =Convert.ToInt32(@ViewData["Categoryid"]) }) |
+    @Html.ActionLink("Back to HomePage", "Index","Home")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+@if (ViewBag.Message != null)
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            alert("@ViewBag.Message");
+        };
+    </script>
+
+
+}

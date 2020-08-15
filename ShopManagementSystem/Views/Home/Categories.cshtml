@@ -1,0 +1,65 @@
+﻿@model ItemPicture
+
+@{
+    ViewBag.Title = "Categories";
+}
+
+<h2>@ViewData["name"]=></h2>
+
+<div>
+    
+    <hr />
+    <dl class="dl-horizontal">
+   
+        <br/>
+        @foreach (var a in Model.itemlist)
+        {
+            <div>
+
+
+
+                <h4>
+                    <h4>
+                        @Html.DisplayNameFor(model => a.Name):
+                        @Html.DisplayFor(modelItem => a.Name)
+                    </h4>
+
+                    @Html.ActionLink("Details", "ItemDetails", new { id = a.Id }) |
+
+
+                    @Html.ActionLink("Shopping Cart", "view") |
+
+                    @Html.ActionLink("Save", "view")
+
+
+                    @foreach (var p in Model.picturelist.Where(x => x.ItemID == a.Id))
+                    {
+                        <picture>
+
+                            @{
+
+                        String img64 = Convert.ToBase64String(p.picture1);
+                        String img64Url = string.Format("data:image/" + p.picture1 + ";base64,{0}", img64); //imagetype can be e.g. gif, jpeg, png etc.
+                            }
+                            <img src="@img64Url" imagealign="right" widht="150" height="150 " />
+                        </picture>
+
+
+                    }
+
+
+                </h4>
+
+
+
+
+            </div>
+            <hr />
+        }
+
+    </dl>
+</div>
+<p>
+   
+    @Html.ActionLink("Back to Homepage", "Index")
+</p>
